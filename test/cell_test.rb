@@ -12,4 +12,13 @@ class CellTest < Minitest::Test
     assert_instance_of Cell, @cell
   end
 
+  def test_ship_attributes
+    assert_equal 'B4', @cell.coordinate
+    assert_equal nil, @cell.ship
+  end
+
+  def test_cell_starts_empty
+    assert @cell.empty?
+  end
+
 end
