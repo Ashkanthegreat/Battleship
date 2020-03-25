@@ -27,6 +27,7 @@ class CellTest < Minitest::Test
     @cell_1.place_ship(@cruiser)
     assert_equal @cruiser, @cell_1.ship
     assert_equal false, @cell_1.empty?
+    assert_equal true, @cell_2.empty?
   end
 
   def test_knows_when_fired_upon
@@ -38,12 +39,10 @@ class CellTest < Minitest::Test
   end
 
   def test_render
+
     assert_equal '.', @cell_1.render
-
     @cell_1.fire_upon
-
     assert_equal 'M', @cell_1.render
-
     @cell_2.place_ship(@cruiser)
 
     assert_equal '.', @cell_2.render
@@ -57,8 +56,7 @@ class CellTest < Minitest::Test
     @cruiser.hit
     @cruiser.hit
     assert_equal true, @cruiser.sunk?
-
-    assert_equal 'X', @cell_2.render 
+    assert_equal 'X', @cell_2.render
 
   end
 

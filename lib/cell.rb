@@ -27,11 +27,10 @@ class Cell
   end
 
   def render(reveal = false)
-    return 'S' if reveal = true && !empty? && !fired_upon?
-    return '.' if fired_upon? == false
     return "M" if fired_upon? == true && empty?
-    return 'H' if fired_upon? == true && !empty? && !@ship.sunk?
-    return 'X' if @ship.sunk? == true && @ship.health < 1
+    return 'X' if fired_upon? == true && @ship.health < 1
+    return 'H' if fired_upon? == true && !empty?
+    return 'S' if reveal == true && !empty?
+    return '.'
   end
-
 end
