@@ -16,4 +16,8 @@ class Board
     @cells.keys.any? {|key| key == coordinate}
   end
 
+  def valid_placement?(ship, positions)
+    ship.length == positions.length
+  end
+
 end
