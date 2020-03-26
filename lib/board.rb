@@ -13,11 +13,58 @@ class Board
   end
 
   def valid_coordinate?(coordinate)
-    @cells.keys.any? {|key| key == coordinate}
+    @cells.keys.any? { |key| key == coordinate }
   end
 
-  def valid_placement?(ship, positions)
-    ship.length == positions.length
+  def valid_placement?(ship, coordinates)
+    #need to check if it overlaps
+    valid_length?(ship, coordinates) && consecutive?(coordinates)
+  end
+
+  def valid_length?(ship, coordinates)
+    #needs test
+    ship.length == coordinates.length
+  end
+
+  def num_coord(coordinates)
+    split_coordinates_by_num = coordinates.map { |coord| coord.chars }
+    split_coordinates_by_num.map { |coord| coord[1].to_i }
+  end
+
+  def letter_coord(coordinates)
+    split_coordinates_by_letter = coordinates.map { |coord| coord.chars }
+    split_coordinates_by_letter.map { |coord| coord[0] }
+  end
+
+  def consecutive_numbers?(coordinates)
+    #needs test
+    letter_coord(coordinates).uniq.size == 1 &&
+    num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
+  end
+
+  def consecutive_letters?(coordinates)
+    #needs test
+    ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
+    ordinal_letters.each_cons(2).all? do  |num1,num2|
+       num2 == (num1 + 1)
+     end
+  end
+
+  def consec_ordinals_continued?(coordinates)
+    #needs test
+    num_coord(coordinates).uniq.size == 1 &&
+    consecutive_letters?(coordinates)
+  end
+
+  def consecutive?(coordinates)
+    #needs test
+    consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
+  end
+
+  def place(ship, coordinates)
+    #iterate ocver board and place ship on each cell
+    # cell is key coordinate is value
+    #you have a method taht will help within another class
   end
 
 end
