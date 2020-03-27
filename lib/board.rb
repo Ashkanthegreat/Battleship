@@ -51,7 +51,7 @@ class Board
   end
 
   def consec_ordinals_continued?(coordinates)
-    #needs test - done 
+    #needs test - done
     num_coord(coordinates).uniq.size == 1 &&
     consecutive_letters?(coordinates)
 
@@ -60,7 +60,7 @@ class Board
   def consecutive?(coordinates)
     #needs test
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
-
+    #require "pry"; binding.pry
   end
 
   def place(ship, coordinates)
