@@ -37,13 +37,13 @@ class Board
   end
 
   def consecutive_numbers?(coordinates)
-    #needs test
+    #needs test - done
     letter_coord(coordinates).uniq.size == 1 &&
     num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
   end
 
   def consecutive_letters?(coordinates)
-    #needs test
+    #needs test -done 
     ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
     ordinal_letters.each_cons(2).all? do  |num1,num2|
        num2 == (num1 + 1)

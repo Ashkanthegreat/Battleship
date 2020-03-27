@@ -37,12 +37,17 @@ class BoardTest < Minitest::Test
   end
 
   def test_numbers_are_consecutive
-  assert_equal true, @board.consecutive_numbers?(["A2", "A3", "A4"])
-  assert_equal false, @board.consecutive_numbers?(["A3", "A2", "A4"])
+    assert_equal true, @board.consecutive_numbers?(["A2", "A3", "A4"])
+    assert_equal false, @board.consecutive_numbers?(["A3", "A2", "A4"])
   end
 
   def test_letter_coord_returns_letters_only
     assert_equal ["A", "A", "A"], @board.letter_coord(["A2", "A3", "A4"])
+  end
+
+  def test_letters_are_consecutive
+    assert_equal true, @board.consecutive_letters?(["A2", "B3", "C4"])
+    assert_equal false, @board.consecutive_letters?(["B2", "A3", "C4"])
   end
 
   def test_valid_placement_consecutive
