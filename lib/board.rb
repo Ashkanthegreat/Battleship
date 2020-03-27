@@ -17,12 +17,12 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    #need to check if it overlaps
+    #need to check if it overlaps, it does 
     valid_length?(ship, coordinates) && consecutive?(coordinates)
   end
 
   def valid_length?(ship, coordinates)
-    #needs test
+    #needs test - done
     ship.length == coordinates.length
   end
 
@@ -37,13 +37,13 @@ class Board
   end
 
   def consecutive_numbers?(coordinates)
-    #needs test
+    #needs test - done
     letter_coord(coordinates).uniq.size == 1 &&
     num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
   end
 
   def consecutive_letters?(coordinates)
-    #needs test
+    #needs test -done
     ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
     ordinal_letters.each_cons(2).all? do  |num1,num2|
        num2 == (num1 + 1)
@@ -51,20 +51,22 @@ class Board
   end
 
   def consec_ordinals_continued?(coordinates)
-    #needs test
+    #needs test - done
     num_coord(coordinates).uniq.size == 1 &&
     consecutive_letters?(coordinates)
+
   end
 
   def consecutive?(coordinates)
-    #needs test
+    #needs test - done?
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
   end
 
-  def place(ship, coordinates)
-    #iterate ocver board and place ship on each cell
-    # cell is key coordinate is value
-    #you have a method taht will help within another class
-  end
 
+  def place(ship, coordinates)
+    valid_placement?(ship, coordinates)
+    coordinates.each do |coordinate|
+      @cells[coordinate].place_ship(ship)
+    end
+  end
 end
