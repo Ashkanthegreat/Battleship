@@ -36,6 +36,11 @@ class BoardTest < Minitest::Test
     assert_equal [2, 3, 4], @board.num_coord(["A2", "A3", "A4"])
   end
 
+  def test_numbers_are_consecutive
+  assert_equal true, @board.consecutive_numbers?(["A2", "A3", "A4"])
+  assert_equal false, @board.consecutive_numbers?(["A3", "A2", "A4"])
+  end
+
   def test_letter_coord_returns_letters_only
     assert_equal ["A", "A", "A"], @board.letter_coord(["A2", "A3", "A4"])
   end

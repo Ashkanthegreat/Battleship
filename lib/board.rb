@@ -54,11 +54,13 @@ class Board
     #needs test
     num_coord(coordinates).uniq.size == 1 &&
     consecutive_letters?(coordinates)
+
   end
 
   def consecutive?(coordinates)
     #needs test
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
+
   end
 
   def place(ship, coordinates)
