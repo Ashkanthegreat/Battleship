@@ -17,12 +17,12 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    #need to check if it overlaps
+    #need to check if it overlaps, it does 
     valid_length?(ship, coordinates) && consecutive?(coordinates)
   end
 
   def valid_length?(ship, coordinates)
-    #needs test
+    #needs test - done
     ship.length == coordinates.length
   end
 
@@ -58,19 +58,14 @@ class Board
   end
 
   def consecutive?(coordinates)
-    #needs test
+    #needs test - done?
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
-    #require "pry"; binding.pry
   end
 
 
   def place(ship, coordinates)
-    #iterate ocver board and place ship on each cell
-    # cell is key coordinate is value
-    #you have a method taht will help within another class
     valid_placement?(ship, coordinates)
     coordinates.each do |coordinate|
-      #require "pry"; binding.pry
       @cells[coordinate].place_ship(ship)
     end
   end
