@@ -78,10 +78,12 @@ class BoardTest < Minitest::Test
     assert_equal true, @board.valid_placement?(@cruiser, ["B1", "C1", "D1"])
   end
 
-  def test_ship_can_be_placed
-    skip
-
+  def test_it_can_place_ship
+    @board.place(@cruiser, ["A1", "A2", "A3"])
   end
+
+
+
 
   def test_valid_placement_is_not_overlapping
     skip

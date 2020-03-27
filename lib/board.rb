@@ -63,10 +63,11 @@ class Board
     #require "pry"; binding.pry
   end
 
+
   def place(ship, coordinates)
     #iterate ocver board and place ship on each cell
     # cell is key coordinate is value
     #you have a method taht will help within another class
+    
   end
-
 end
