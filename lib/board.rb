@@ -68,6 +68,10 @@ class Board
     #iterate ocver board and place ship on each cell
     # cell is key coordinate is value
     #you have a method taht will help within another class
-    
+    valid_placement?(ship, coordinates)
+    coordinates.each do |coordinate|
+      #require "pry"; binding.pry
+      @cells[coordinate].place_ship(ship)
+    end
   end
 end
