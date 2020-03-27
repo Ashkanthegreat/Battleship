@@ -43,6 +43,8 @@ class BoardTest < Minitest::Test
 
   def test_letter_coord_returns_letters_only
     assert_equal ["A", "A", "A"], @board.letter_coord(["A2", "A3", "A4"])
+    assert_equal ["B", "B", "B"], @board.letter_coord(["B2", "B3", "B4"])
+    assert_equal ["A", "B", "C"], @board.letter_coord(["A2", "B3", "C4"])
   end
 
   def test_letters_are_consecutive
