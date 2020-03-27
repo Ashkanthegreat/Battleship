@@ -64,7 +64,7 @@ class BoardTest < Minitest::Test
 
   def test_consecutive_helper_method
     assert_equal false, @board.consecutive?(["B1", "A1", "C3"])
-    #assert_equal true,  @board.consecutive?(["A1", "B2", "C3"])
+    assert_equal true,  @board.consecutive?(["A1", "B1", "C1"])
   end
 
   def test_valid_placement_consecutive
@@ -72,7 +72,7 @@ class BoardTest < Minitest::Test
     assert_equal false, @board.valid_placement?(@submarine, ["A1", "C1"])
     assert_equal false, @board.valid_placement?(@cruiser, ["A3", "A2", "A1"])
     assert_equal false, @board.valid_placement?(@submarine, ["C1", "B1"])
-    #assert_equal true,  @board.valid_placement?(@submarine, ["C1", "D2"])
+    assert_equal true,  @board.valid_placement?(@submarine, ["C1", "D1"])
   end
 
   def test_valid_placement_cant_be_diagonal
@@ -90,6 +90,7 @@ class BoardTest < Minitest::Test
 
     @cell_1 = @board.cells["A1"]
     assert_equal @cruiser, @cell_1.ship
+    assert_equal false,  @cell_1.empty?
 
     @cell_2 = @board.cells["A2"]
     assert_equal @cruiser, @cell_2.ship
@@ -98,10 +99,13 @@ class BoardTest < Minitest::Test
     assert_equal @cruiser, @cell_3.ship
   end
 
+
+
   def test_valid_placement_is_not_overlapping
-    skip
     @board.place(@cruiser, ["A1", "A2", "A3"])
-    assert_equal false, @board.valid_placement?(@submarine, ["A1", "B1"])
+    assert_equal true, @board.occupied?(@cruiser,["A1", "A2", "A3"])
+    #@board.place(@submarine, ["A1", "B1"])
+    assert_equal false, @board.occupied?(@submarine, ["A1", "B1"])#valid_placement?(@submarine, ["A1", "B1"])
   end
 
 end

@@ -2,14 +2,24 @@ class Board
   attr_reader :cells
 
   def initialize
-    @cells = {"A1"=> Cell.new("A1"), "A2" => Cell.new("A2"),
-      "A3" => Cell.new("A3"), "A4" => Cell.new("A4"),
-      "B1" => Cell.new("B1"), "B2" => Cell.new("B2"),
-      "B3" => Cell.new("B3"), "B4" => Cell.new("B4"),
-      "C1" => Cell.new("C1"), "C2" => Cell.new("C2"),
-      "C3" => Cell.new("C3"), "C4" => Cell.new("C4"),
-      "D1" => Cell.new("D1"), "D2" => Cell.new("D2"),
-      "D3" => Cell.new("D3"), "D4" => Cell.new("D4")}
+    @cells = {
+ "A1" => Cell.new("A1"),
+ "A2" => Cell.new("A2"),
+ "A3" => Cell.new("A3"),
+ "A4" => Cell.new("A4"),
+ "B1" => Cell.new("B1"),
+ "B2" => Cell.new("B2"),
+ "B3" => Cell.new("B3"),
+ "B4" => Cell.new("B4"),
+ "C1" => Cell.new("C1"),
+ "C2" => Cell.new("C2"),
+ "C3" => Cell.new("C3"),
+ "C4" => Cell.new("C4"),
+ "D1" => Cell.new("D1"),
+ "D2" => Cell.new("D2"),
+ "D3" => Cell.new("D3"),
+ "D4" => Cell.new("D4"),
+}
   end
 
   def valid_coordinate?(coordinate)
@@ -17,7 +27,7 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    #need to check if it overlaps, it does 
+    #need to check if it overlaps, it does
     valid_length?(ship, coordinates) && consecutive?(coordinates)
   end
 
@@ -54,13 +64,48 @@ class Board
     #needs test - done
     num_coord(coordinates).uniq.size == 1 &&
     consecutive_letters?(coordinates)
-
   end
 
   def consecutive?(coordinates)
     #needs test - done?
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
   end
+
+  def overlapping?(ship, coordinates)
+
+    rows = coordinates.map do |coordinate|
+      coordinate[1]
+
+
+    columns = coordinate.map do |coordinate|
+      coordinate[0]
+      end
+    end
+  end
+
+  def occupied?(ship, coordinates)
+    array = []
+    coordinates.each do |coordinate|
+      array << @cells[coordinate].empty?
+
+    end
+    return true if array.include?(false)
+    return false if array.
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   def place(ship, coordinates)
