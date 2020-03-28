@@ -102,6 +102,9 @@ class Board
 
   def render(reveal = false)
     a = @cells["A1"].render(reveal), @cells["A2"].render(reveal), @cells["A3"].render(reveal), @cells["A4"].render(reveal)
-
+    b = @cells["B1"].render(reveal), @cells["B2"].render(reveal), @cells["B3"].render(reveal), @cells["B4"].render(reveal)
+    c = @cells["C1"].render(reveal), @cells["C2"].render(reveal), @cells["C3"].render(reveal), @cells["C4"].render(reveal)
+    d = @cells["D1"].render(reveal), @cells["D2"].render(reveal), @cells["D3"].render(reveal), @cells["D4"].render(reveal)
+    rendered = "  1 2 3 4 \nA #{a.join(" ")} \nB #{b.join(" ")} \nC #{c.join(" ")} \nD #{d.join(" ")} \n"
  end
 end
