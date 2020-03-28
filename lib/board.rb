@@ -87,26 +87,10 @@ class Board
     array = []
     coordinates.each do |coordinate|
       array << @cells[coordinate].empty?
-
     end
     return true if array.include?(false)
-    return false if array.
+    false
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def place(ship, coordinates)
     valid_placement?(ship, coordinates)
@@ -114,4 +98,9 @@ class Board
       @cells[coordinate].place_ship(ship)
     end
   end
+
+
+  def render(reveal = false)
+  
+ end
 end
