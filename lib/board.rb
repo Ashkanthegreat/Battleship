@@ -101,6 +101,7 @@ class Board
 
 
   def render(reveal = false)
-  
+    a = @cells["A1"].render(reveal), @cells["A2"].render(reveal), @cells["A3"].render(reveal), @cells["A4"].render(reveal)
+
  end
 end
