@@ -106,5 +106,8 @@ class Board
     c = @cells["C1"].render(reveal), @cells["C2"].render(reveal), @cells["C3"].render(reveal), @cells["C4"].render(reveal)
     d = @cells["D1"].render(reveal), @cells["D2"].render(reveal), @cells["D3"].render(reveal), @cells["D4"].render(reveal)
     rendered = "  1 2 3 4 \nA #{a.join(" ")} \nB #{b.join(" ")} \nC #{c.join(" ")} \nD #{d.join(" ")} \n"
+    puts rendered
+    rendered
+    #need to use puts to see result
  end
 end
