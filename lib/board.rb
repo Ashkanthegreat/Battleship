@@ -109,5 +109,5 @@ class Board
     puts rendered
     rendered
     #need to use puts to see result
- end
+  end
 end
