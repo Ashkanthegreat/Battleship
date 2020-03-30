@@ -86,7 +86,7 @@ class Board
       coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
         end
-      else "Not Valid"
+    else "Not Valid"
     end
   end
 
