@@ -71,31 +71,23 @@ class Board
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
   end
 
-  def overlapping?(ship, coordinates)
-
-    rows = coordinates.map do |coordinate|
-      coordinate[1]
-
-
-    columns = coordinate.map do |coordinate|
-      coordinate[0]
-      end
-    end
-  end
-
-  def occupied?(ship, coordinates)
-    array = []
+  def occupied?(coordinates)
+    occupied = []
     coordinates.each do |coordinate|
-      array << @cells[coordinate].empty?
+      occupied << @cells[coordinate].empty?
     end
-    return true if array.include?(false)
+    puts occupied
+    return true if occupied.include?(false)
     false
   end
 
   def place(ship, coordinates)
-    valid_placement?(ship, coordinates)
-    coordinates.each do |coordinate|
-      @cells[coordinate].place_ship(ship)
+    if occupied?(coordinates) == false
+      valid_placement?(ship, coordinates)
+      coordinates.each do |coordinate|
+        @cells[coordinate].place_ship(ship)
+        end
+      else "Not Valid"
     end
   end
 
