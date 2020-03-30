@@ -12,5 +12,11 @@ class MenuTest < Minitest::Test
     assert_instance_of Menu, @menu
   end
 
-  
+  def test_menu_response
+    assert_equal "You hate to see it. -Tim", @menu.menu_response("q")
+    assert_equal "You love to see it. -Tim", @menu.menu_response("p")
+    assert_equal "Invalid Answer! Say more -Megan", @menu.menu_response("j")
+  end
+
+
 end
