@@ -86,7 +86,7 @@ class Board
       coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
         end
-    else "Not Valid"
+      else "Not Valid"
     end
   end
 
@@ -97,8 +97,7 @@ class Board
     c = @cells["C1"].render(reveal), @cells["C2"].render(reveal), @cells["C3"].render(reveal), @cells["C4"].render(reveal)
     d = @cells["D1"].render(reveal), @cells["D2"].render(reveal), @cells["D3"].render(reveal), @cells["D4"].render(reveal)
     rendered = "  1 2 3 4 \nA #{a.join(" ")} \nB #{b.join(" ")} \nC #{c.join(" ")} \nD #{d.join(" ")} \n"
-    puts rendered
-    rendered
-    #need to use puts to see result
+    p rendered
+    #uses p instead of puts to print to the terminal and return variable
   end
 end

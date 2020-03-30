@@ -18,11 +18,11 @@ class BoardTest < Minitest::Test
   def test_it_has_cells
     assert_equal 16, @board.cells.length
   end
-
-  def test_coordinates_equals_ship_length
-    assert_equal false, @board.valid_placement?(@cruiser, ["A1", "A2"])
-    assert_equal false, @board.valid_placement?(@submarine, ["A2", "A3", "A4"])
-  end
+  # remove redundant test
+  # def test_coordinates_equals_ship_length
+  #   assert_equal false, @board.valid_placement?(@cruiser, ["A1", "A2"])
+  #   assert_equal false, @board.valid_placement?(@submarine, ["A2", "A3", "A4"])
+  # end
 
   def test_cell_has_valid_coordinates
     assert_equal true, @board.valid_coordinate?("A1")
