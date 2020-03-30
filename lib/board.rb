@@ -36,66 +36,28 @@ class Board
     ship.length == coordinates.length
   end
 
-  def num_coord(coordinates)
-    split_coordinates_by_num = coordinates.map { |coord| coord.chars }
-    split_coordinates_by_num.map { |coord| coord[1].to_i }
-  end
-
-  def letter_coord(coordinates)
-    split_coordinates_by_letter = coordinates.map { |coord| coord.chars }
-    split_coordinates_by_letter.map { |coord| coord[0] }
-  end
-
-  def consecutive_numbers?(coordinates)
-    #needs test - done
-    letter_coord(coordinates).uniq.size == 1 &&
-    num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
-  end
-
-  def consecutive_letters?(coordinates)
-    #needs test -done
-    ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
-    ordinal_letters.each_cons(2).all? do  |num1,num2|
-       num2 == (num1 + 1)
-     end
-  end
-
-  def consec_ordinals_continued?(coordinates)
-    #needs test - done
-    num_coord(coordinates).uniq.size == 1 &&
-    consecutive_letters?(coordinates)
-  end
-
   def consecutive?(coordinates)
     #needs test - done?
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
   end
 
-  def overlapping?(ship, coordinates)
-
-    rows = coordinates.map do |coordinate|
-      coordinate[1]
-
-
-    columns = coordinate.map do |coordinate|
-      coordinate[0]
-      end
-    end
-  end
-
-  def occupied?(ship, coordinates)
-    array = []
+  def occupied?(coordinates)
+    occupied = []
     coordinates.each do |coordinate|
-      array << @cells[coordinate].empty?
+      occupied << @cells[coordinate].empty?
     end
-    return true if array.include?(false)
+    puts occupied
+    return true if occupied.include?(false)
     false
   end
 
   def place(ship, coordinates)
-    valid_placement?(ship, coordinates)
-    coordinates.each do |coordinate|
-      @cells[coordinate].place_ship(ship)
+    if occupied?(coordinates) == false
+      valid_placement?(ship, coordinates)
+      coordinates.each do |coordinate|
+        @cells[coordinate].place_ship(ship)
+        end
+      else "Not Valid"
     end
   end
 
@@ -109,5 +71,37 @@ class Board
     puts rendered
     rendered
     #need to use puts to see result
- end
+  end
+end
+
+#HELPER METHODS
+
+def num_coord(coordinates)
+  split_coordinates_by_num = coordinates.map { |coord| coord.chars }
+  split_coordinates_by_num.map { |coord| coord[1].to_i }
+end
+
+def letter_coord(coordinates)
+  split_coordinates_by_letter = coordinates.map { |coord| coord.chars }
+  split_coordinates_by_letter.map { |coord| coord[0] }
+end
+
+def consecutive_numbers?(coordinates)
+  #needs test - done
+  letter_coord(coordinates).uniq.size == 1 &&
+  num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
+end
+
+def consecutive_letters?(coordinates)
+  #needs test -done
+  ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
+  ordinal_letters.each_cons(2).all? do  |num1,num2|
+     num2 == (num1 + 1)
+   end
+end
+
+def consec_ordinals_continued?(coordinates)
+  #needs test - done
+  num_coord(coordinates).uniq.size == 1 &&
+  consecutive_letters?(coordinates)
 end
