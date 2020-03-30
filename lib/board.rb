@@ -36,6 +36,36 @@ class Board
     ship.length == coordinates.length
   end
 
+  def num_coord(coordinates)
+    split_coordinates_by_num = coordinates.map { |coord| coord.chars }
+    split_coordinates_by_num.map { |coord| coord[1].to_i }
+  end
+
+  def letter_coord(coordinates)
+    split_coordinates_by_letter = coordinates.map { |coord| coord.chars }
+    split_coordinates_by_letter.map { |coord| coord[0] }
+  end
+
+  def consecutive_numbers?(coordinates)
+    #needs test - done
+    letter_coord(coordinates).uniq.size == 1 &&
+    num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
+  end
+
+  def consecutive_letters?(coordinates)
+    #needs test -done
+    ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
+    ordinal_letters.each_cons(2).all? do  |num1,num2|
+       num2 == (num1 + 1)
+     end
+  end
+
+  def consec_ordinals_continued?(coordinates)
+    #needs test - done
+    num_coord(coordinates).uniq.size == 1 &&
+    consecutive_letters?(coordinates)
+  end
+
   def consecutive?(coordinates)
     #needs test - done?
     consecutive_numbers?(coordinates) || consec_ordinals_continued?(coordinates)
@@ -72,36 +102,4 @@ class Board
     rendered
     #need to use puts to see result
   end
-end
-
-#HELPER METHODS
-
-def num_coord(coordinates)
-  split_coordinates_by_num = coordinates.map { |coord| coord.chars }
-  split_coordinates_by_num.map { |coord| coord[1].to_i }
-end
-
-def letter_coord(coordinates)
-  split_coordinates_by_letter = coordinates.map { |coord| coord.chars }
-  split_coordinates_by_letter.map { |coord| coord[0] }
-end
-
-def consecutive_numbers?(coordinates)
-  #needs test - done
-  letter_coord(coordinates).uniq.size == 1 &&
-  num_coord(coordinates).each_cons(2).all?  { |num1,num2| num2 == (num1 + 1) }
-end
-
-def consecutive_letters?(coordinates)
-  #needs test -done
-  ordinal_letters = letter_coord(coordinates).map { |letter| letter.ord }
-  ordinal_letters.each_cons(2).all? do  |num1,num2|
-     num2 == (num1 + 1)
-   end
-end
-
-def consec_ordinals_continued?(coordinates)
-  #needs test - done
-  num_coord(coordinates).uniq.size == 1 &&
-  consecutive_letters?(coordinates)
 end
