@@ -72,7 +72,7 @@ class BoardTest < Minitest::Test
     assert_equal false, @board.valid_placement?(@submarine, ["A1", "C1"])
     assert_equal false, @board.valid_placement?(@cruiser, ["A3", "A2", "A1"])
     assert_equal false, @board.valid_placement?(@submarine, ["C1", "B1"])
-    assert_equal true,  @board.valid_placement?(@submarine, ["C1", "D1"])
+    assert_equal true,  @board.valid_placement?(@cruiser, ["B1", "C1", "D1"])
   end
 
   def test_valid_placement_cant_be_diagonal
@@ -99,12 +99,19 @@ class BoardTest < Minitest::Test
     assert_equal @cruiser, @cell_3.ship
   end
 
-  def test_valid_placement_is_not_overlapping
-    skip
+  def test_knows_when_occupied
+    assert_equal false, @board.occupied?(["A1", "A2", "A3"])
     @board.place(@cruiser, ["A1", "A2", "A3"])
-    assert_equal true, @board.occupied?(@cruiser,["A1", "A2", "A3"])
-    #@board.place(@submarine, ["A1", "B1"])
-    assert_equal false, @board.occupied?(@submarine, ["A1", "B1"])#valid_placement?(@submarine, ["A1", "B1"])
+    assert_equal true, @board.occupied?(["A1", "A2", "A3"])
+  end
+
+  def test_valid_placement_is_not_overlapping
+    assert_equal false, @board.occupied?(["A1", "A2", "A3"])
+    @board.place(@cruiser, ["A1", "A2", "A3"])
+    assert_equal true, @board.occupied?(["A1", "A2", "A3"])
+    @board.place(@submarine, ["A1", "A2"])
+    #require "pry"; binding.pry
+    assert_equal "Not Valid", @board.place(@submarine, ["A1", "A2"])
   end
 
   def test_it_cam_render_the_board
