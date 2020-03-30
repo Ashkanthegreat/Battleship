@@ -17,4 +17,8 @@ class SetupTest < Minitest::Test
     assert_equal Array, @setup.player_ships.class
   end
 
+  def test_can_place_comp_ships
+
+  end
+
 end

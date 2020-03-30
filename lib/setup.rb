@@ -4,7 +4,10 @@ require './lib/ship.rb'
 require './lib/cell.rb'
 
 class Setup
-attr_reader :computer_board, :player_board, :computer_ships, :player_ships
+attr_reader :computer_board,
+            :player_board,
+            :computer_ships,
+            :player_ships
 
   def initialize
     @computer_board = Board.new

@@ -76,7 +76,6 @@ class Board
     coordinates.each do |coordinate|
       occupied << @cells[coordinate].empty?
     end
-    puts occupied
     return true if occupied.include?(false)
     false
   end
@@ -87,7 +86,7 @@ class Board
       coordinates.each do |coordinate|
         @cells[coordinate].place_ship(ship)
         end
-      else "Not Valid"
+    else "Not Valid"
     end
   end
 
