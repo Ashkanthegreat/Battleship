@@ -51,4 +51,9 @@ class Game
      @computer_shot = @setup.computer_board.cells.keys.sample(1)
    end
 
+   @setup.player_board.cells[@computer_shot[0]].fire_upon
+    @all_computer_shots << @computer_shot
+    return_comp_shot_result
+  end
+
 end
