@@ -20,5 +20,12 @@ class Game
   if @menu.user_decision == "p"
     play_game()
   end
-  
+
+  def display_boards
+      p "*********COMPUTER BOARD*********"
+     @setup.computer_board.render
+     p "**********PLAYER BOARD**********"
+     @setup.player_board.render(true)
+  end
+
 end
