@@ -69,6 +69,16 @@ class Game
     end
   end
 
+  def return_comp_shot_result
+    if @setup.player_board.cells[@computer_shot[0]].render == "M"
+      puts "My shot on #{@computer_shot[0]} was a miss"
+    elsif @setup.player_board.cells[@computer_shot[0]].render == "H"
+      puts "My shot on #{@computer_shot[0]} was a hit"
+    elsif @setup.player_board.cells[@computer_shot[0]].render == "X"
+      puts "My shot on #{@computer_shot[0]} sunk a ship"
+    end
+  end
+
   
 
 end
