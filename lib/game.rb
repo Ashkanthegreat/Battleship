@@ -79,6 +79,14 @@ class Game
     end
   end
 
+  def take_turn
+    player_shot
+    computer_shot
+    puts `clear`
+  end
+
   
+
+
 
 end
