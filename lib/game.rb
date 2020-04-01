@@ -85,7 +85,15 @@ class Game
     puts `clear`
   end
 
-  
+
+  def computer_wins
+    @player_ships.all? {|ship| ship.sunk?}
+  end
+
+  def player_wins
+    @computer_ships.all? {|ship| ship.sunk?}
+  end
+
 
 
 
