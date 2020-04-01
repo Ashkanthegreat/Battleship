@@ -24,7 +24,7 @@ class Game
   def display_boards
       p "*********COMPUTER BOARD*********"
      @setup.computer_board.render
-     p "**********PLAYER BOARD**********"
+      p "**********PLAYER BOARD**********"
      @setup.player_board.render(true)
   end
 
