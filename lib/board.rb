@@ -91,13 +91,13 @@ class Board
   end
 
 
-  def render(reveal = false)
-    a = @cells["A1"].render(reveal), @cells["A2"].render(reveal), @cells["A3"].render(reveal), @cells["A4"].render(reveal)
-    b = @cells["B1"].render(reveal), @cells["B2"].render(reveal), @cells["B3"].render(reveal), @cells["B4"].render(reveal)
-    c = @cells["C1"].render(reveal), @cells["C2"].render(reveal), @cells["C3"].render(reveal), @cells["C4"].render(reveal)
-    d = @cells["D1"].render(reveal), @cells["D2"].render(reveal), @cells["D3"].render(reveal), @cells["D4"].render(reveal)
-    rendered = "  1 2 3 4 \nA #{a.join(" ")} \nB #{b.join(" ")} \nC #{c.join(" ")} \nD #{d.join(" ")} \n"
-    p rendered
-    #uses p instead of puts to print to the terminal and return variable
-  end
+  def render(show_ship = false)
+   a_row = @cells["A1"].render(show_ship), @cells["A2"].render(show_ship), @cells["A3"].render(show_ship), @cells["A4"].render(show_ship)
+   b_row = @cells["B1"].render(show_ship), @cells["B2"].render(show_ship), @cells["B3"].render(show_ship), @cells["B4"].render(show_ship)
+   c_row = @cells["C1"].render(show_ship), @cells["C2"].render(show_ship), @cells["C3"].render(show_ship), @cells["C4"].render(show_ship)
+   d_row = @cells["D1"].render(show_ship), @cells["D2"].render(show_ship), @cells["D3"].render(show_ship), @cells["D4"].render(show_ship)
+   rendered_board = "  1 2 3 4 \nA #{a_row.join(" ")} \nB #{b_row.join(" ")} \nC #{c_row.join(" ")} \nD #{d_row.join(" ")} \n"
+   puts rendered_board
+   rendered_board
+ end
 end

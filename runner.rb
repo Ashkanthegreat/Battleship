@@ -1,3 +1,9 @@
-require './lib/game.rb'
+require './lib/ship'
+require './lib/cell'
+require './lib/board'
+require './lib/start'
 
-Game.new.start
+start = Start.new
+start.start_game
+
+#Game.new.start
