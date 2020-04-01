@@ -94,7 +94,20 @@ class Game
     @computer_ships.all? {|ship| ship.sunk?}
   end
 
-
-
+  def play_game
+    @setup.place_computer_ships
+    @setup.place_player_ships
+    display_boards
+    take_turn until computer_wins || player_wins
+    if computer_wins
+      p ""
+      p "Timputer Wins!"
+      p ""
+    elsif player_wins
+      p ""
+      p "The user wins!"
+      p ""
+    end
+  end
 
 end
