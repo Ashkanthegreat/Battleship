@@ -28,4 +28,27 @@ class Game
      @setup.player_board.render(true)
   end
 
+  def player_shot
+    display_boards
+    p "Enter the coordinate for your shot:"
+    @guess = gets.chomp.upcase
+    until @setup.computer_board.cells.include?(@guess) && !@all_player_shots.include?(@guess)
+      if !@setup.computer_board.cells.include?(@guess)
+        p "Please enter a valid coordinate"
+      else
+        p 'You already shot there'
+      end
+      @guess = gets.chomp.upcase
+    end
+    @all_player_shots << @guess
+    @setup.computer_board.cells["#{@guess}"].fire_upon
+    return_player_shot_result
+  end
+
+  def computer_shot
+   @computer_shot = @setup.computer_board.cells.keys.sample(1)
+   if @all_computer_shots.include?(@computer_shot)
+     @computer_shot = @setup.computer_board.cells.keys.sample(1)
+   end
+
 end
